@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Blocipedia</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="container">
-    <ul class="nav nav-tabs">
-      <li><%= link_to "Blocipedia", welcome_index_path %></li>
+  <head>
+    <title>Blocipedia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li><%= link_to "Blocipedia", root_path %></li>
 
-      <div class="pull-right user-info my-head">
-        <% if user_signed_in? %>          
-          Signed in as: <strong><%= current_user.name %></strong> |
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-        <% else %>
-          <%= link_to "Sign Up", new_user_registration_path %> -
-          <%= link_to "Log In", new_user_session_path %>
-          
-        <% end %>
-      </div>
-    </ul>
+        <div class="pull-right user-info my-head">
+          <% if user_signed_in? %>          
+            Signed in as: <strong><%= link_to current_user.name, user_path(current_user) %></strong> |
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+          <% else %>
+            <%= link_to "Sign Up", new_user_registration_path %> -
+            <%= link_to "Log In", new_user_session_path %>
+            
+          <% end %>
+        </div>
+      </ul>
 
-    <%= render 'layouts/messages' %>
-    <%= yield %>
-    <%-# render 'layouts/footer' -%>
-  </div>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+      <%-# render 'layouts/footer' -%>
+    </div>
 
-</body>
+  </body>
 </html>
