@@ -28,7 +28,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'shoulda'
-  gem 'faker'
+  gem 'faker', '~> 1.8.4'
   gem 'factory_girl_rails'
   gem 'pry-rails'
 end
