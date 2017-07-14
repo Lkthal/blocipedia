@@ -1,0 +1,13 @@
+<div class="jumbotron">
+
+    <span class="text-primary"><h1>Upgrade to Premium!</h1></span>
+
+    <p class="text-justify">
+        For only $15, you can upgrade your account to gain the ability to create private wiki's.  Also, you will be able to add collaborater's to your wiki's so you can work together
+        to create something amazing without worrying about someone else destrying your project.  Upgrade your account now!
+    </p> <br />
+    <%= form_tag charges_path do %>
+        <script class="stripe-button" src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>"
+            data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+    <% end %>
+</div>
