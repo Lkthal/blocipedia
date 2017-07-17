@@ -26,7 +26,7 @@
     <div class="col-md-2">
         <h2 class="bg-primary text-center">Wikis</h2>
             <% @user.wikis.each do |wiki| %>
-                <%= link_to wiki.title, wiki %>
+                <strong><%= link_to wiki.title, wiki %></strong> <br />
             <% end %>
     </div>
 </div>
