@@ -16,8 +16,22 @@ users = User.all
     Wiki.create!(
         user: users.sample,
         title: Faker::Lovecraft.deity,
-        body: Faker::Lovecraft.paragraph,
-        private: false
+        private: false,
+        body: %Q{
+# #{Faker::Lovecraft.sentence}
+
+---
+
+[#{Faker::Lorem.word}](#{Faker::Internet.url})
+
+#{Faker::Markdown.random}
+
+#{Faker::Lovecraft.paragraph}
+
+![#{Faker::Lorem.word}](#{Faker::LoremPixel.image})
+
+#{Faker::Lovecraft.paragraph}
+}
     )
 end
 
