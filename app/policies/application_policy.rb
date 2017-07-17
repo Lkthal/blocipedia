@@ -47,11 +47,10 @@ class ApplicationPolicy
     end
 
     def resolve
-      if user.admin?
+      if user.admin? || user.premium?
         scope.all
       else
-        scope.all
-        #scope.where(private: false)
+        scope.where(private: false)
       end
     end
   end
