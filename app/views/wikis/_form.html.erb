@@ -23,6 +23,12 @@
                 <%= f.check_box :private %> Private Wiki
             <% end %>
         </div>
+    <% else %>
+        <div class="form-group">
+            <%= f.label :private, class: 'checkbox private-checkbox' do %>
+                <%= f.check_box :private, disabled: true %> Private Wiki
+            <% end %>
+        </div>
     <% end %>
     <div class="form-group">
         <%= f.submit "Save", class: 'btn btn-primary' %>
