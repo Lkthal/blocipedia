@@ -3,13 +3,10 @@
         <div class="media">
             <br />
             <div class="media-body">
-                <h2 class="media-heading"><%= @user.name %> - <%= @user.email %></h2>
+                <h2 class="media-heading"><strong><%= @user.name %></strong> - <em><%= @user.email %></em> <br />
                 <small>
                     Account Status: <%= @user.role.capitalize %>
-                </small> <br />
-                <small>
-                    <%= pluralize(@user.wikis.count, 'wiki') %>
-                </small>
+                </small></h2> <br /> <br />
             </div>
         </div>
     </div>
@@ -23,10 +20,16 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-2">
-        <h2 class="bg-primary text-center">Wikis</h2>
+    <div class="col-md-4">
+        <h2 class="bg-primary text-center">Your Wikis</h2>
             <% @user.wikis.each do |wiki| %>
-                <strong><%= link_to wiki.title, wiki %></strong> <br />
+                <h3><strong><%= link_to wiki.title, wiki %></strong></h3> <br />
+            <% end %>
+    </div>
+    <div class="col-md-4">
+        <h2 class="bg-primary text-center">Collaboration</h2>
+            <% @user.collaborators.each do |colab| %>
+                <h3><strong><%= link_to Wiki.find(colab.wiki_id).title, wiki_path(colab.wiki_id) %></strong></h3> <br />
             <% end %>
     </div>
 </div>

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
 
   has_many :wikis, dependent: :destroy
+  has_many :collaborators, dependent: :destroy
 
   enum role: [:standard, :premium, :admin]
 

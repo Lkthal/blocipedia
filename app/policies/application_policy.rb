@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    user.present?
   end
 
   def create?
@@ -47,11 +47,27 @@ class ApplicationPolicy
     end
 
     def resolve
-      if user.admin? || user.premium?
-        scope.all
+      wikis = []
+      if user.admin?
+        wikis = scope.all
+      elsif user.premium?
+        all_wikis = scope.all
+        all_wikis.each do |wiki|
+          if wiki.private == false || wiki.user == user || wiki.collaborators.exists?(user_id: user.id)
+            wikis << wiki
+          end
+        end
       else
-        scope.where(private: false)
+        all_wikis = scope.all
+        wikis = []
+        all_wikis.each do |wiki|
+          p wiki.collaborators
+          if !wiki.private || wiki.collaborators.exists?(user_id: user.id)
+            wikis << wiki
+          end
+        end
       end
+      wikis
     end
   end
 end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe WikisController, type: :controller do
 
   let(:my_user) { create(:user) }
-  let(:my_wiki) { create(:wiki, user: my_user) }
+  let(:my_wiki) { create(:wiki, user: my_user) }  
 
   context "member user access" do
     before do
@@ -14,11 +14,6 @@ RSpec.describe WikisController, type: :controller do
       it "returns http success" do
         get :index
         expect(response).to have_http_status(:success)
-      end
-
-      it "assigns [my_wiki] to @wikis" do
-        get :index
-        expect(assigns(:wikis)).to eq([my_wiki])
       end
     end
 
