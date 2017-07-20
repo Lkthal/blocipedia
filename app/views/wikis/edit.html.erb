@@ -9,3 +9,11 @@
         <%= render 'md' %>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-6">
+        <%= render partial: 'collaborators/collaborator_form', locals: { wiki: @wiki } %>
+    </div>            
+</div>
